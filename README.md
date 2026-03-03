@@ -119,41 +119,79 @@ deactivate
 
 #### セットアップ・ビルド
 
-```bash
+```cmd
+:: コマンドプロンプト (cmd)
+cd java
+
+:: 依存ライブラリのダウンロード & コンパイル
+mvn compile
+
+:: VS Code 用に依存 JAR を lib/ にコピー（VS Code でのエラー解消）
+mvn dependency:copy-dependencies -DoutputDirectory=lib
+```
+
+```powershell
+# PowerShell
 cd java
 
 # 依存ライブラリのダウンロード & コンパイル
 mvn compile
 
 # VS Code 用に依存 JAR を lib/ にコピー（VS Code でのエラー解消）
-mvn dependency:copy-dependencies -DoutputDirectory=lib
+mvn dependency:copy-dependencies "-DoutputDirectory=lib"
 ```
 
 #### 問題ファイルの実行
 
-```bash
-# java/ ディレクトリ内で実行
+```cmd
+:: コマンドプロンプト (cmd) / java/ ディレクトリ内で実行
 
-# STAGE 1: バグ修正
+:: STAGE 1: バグ修正
 mvn exec:java -Dexec.mainClass=problems.stage1.BugFix
 
-# STAGE 2: データ推理
+:: STAGE 2: データ推理
 mvn exec:java -Dexec.mainClass=problems.stage2.DataAnalysis
 
-# STAGE 3: FizzBuzz
+:: STAGE 3: FizzBuzz
 mvn exec:java -Dexec.mainClass=problems.stage3.FizzBuzz
 
-# STAGE 4: センサーログ解析
+:: STAGE 4: センサーログ解析
 mvn exec:java -Dexec.mainClass=problems.stage4.Analyze
+```
+
+```powershell
+# PowerShell / java/ ディレクトリ内で実行
+# PowerShell では -D を含む引数をクォートで囲む必要があります
+
+# STAGE 1: バグ修正
+mvn exec:java "-Dexec.mainClass=problems.stage1.BugFix"
+
+# STAGE 2: データ推理
+mvn exec:java "-Dexec.mainClass=problems.stage2.DataAnalysis"
+
+# STAGE 3: FizzBuzz
+mvn exec:java "-Dexec.mainClass=problems.stage3.FizzBuzz"
+
+# STAGE 4: センサーログ解析
+mvn exec:java "-Dexec.mainClass=problems.stage4.Analyze"
 ```
 
 #### 解答ファイルの実行（ネタバレ注意）
 
-```bash
+```cmd
+:: コマンドプロンプト (cmd)
 mvn exec:java -Dexec.mainClass=answers.stage1.Answer
 mvn exec:java -Dexec.mainClass=answers.stage2.Answer
 mvn exec:java -Dexec.mainClass=answers.stage3.Answer
 mvn exec:java -Dexec.mainClass=answers.stage4.Answer
+```
+
+```powershell
+# PowerShell
+mvn exec:java "-Dexec.mainClass=answers.stage1.Answer"
+mvn exec:java "-Dexec.mainClass=answers.stage2.Answer"
+mvn exec:java "-Dexec.mainClass=answers.stage3.Answer"
+mvn exec:java "-Dexec.mainClass=answers.stage4.Answer"
 ```
 
 ---
