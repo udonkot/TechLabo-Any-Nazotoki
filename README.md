@@ -82,6 +82,9 @@ python -m venv .venv
 # macOS / Linux
 source .venv/bin/activate
 
+# pipの更新
+python.exe -m pip install --upgrade pip
+
 # 依存パッケージのインストール
 pip install -r requirements.txt
 ```
