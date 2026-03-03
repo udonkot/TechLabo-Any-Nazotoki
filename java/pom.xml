@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.techlabo</groupId>
+    <artifactId>nazotoki-java</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <maven.compiler.release>17</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <!-- JSON パース用ライブラリ -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20240303</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <!--
+            java/ ディレクトリをソースルートに設定。
+            これにより以下のようなパッケージ構成になる:
+              problems/stage1/BugFix.java  -> package problems.stage1;
+              answers/stage1/Answer.java   -> package answers.stage1;
+        -->
+        <sourceDirectory>${project.basedir}</sourceDirectory>
+
+        <!-- JSON データファイルをクラスパスに含める -->
+        <resources>
+            <resource>
+                <directory>${project.basedir}</directory>
+                <includes>
+                    <include>problems/**/*.json</include>
+                </includes>
+            </resource>
+        </resources>
+
+        <plugins>
+            <!-- Maven デフォルトコンパイラ設定 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    <!-- pom.xml は Java ファイルではないので除外不要（自動無視） -->
+                    <excludes>
+                        <exclude>target/**</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+
+            <!-- 特定クラスを実行する: mvn exec:java -Dexec.mainClass=problems.stage1.BugFix -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.3.0</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>

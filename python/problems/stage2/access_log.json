@@ -1,0 +1,22 @@
+[
+    {
+        "file": "report.pdf",
+        "access_count": 45
+    },
+    {
+        "file": "config.log",
+        "access_count": 1203
+    },
+    {
+        "file": "design.png",
+        "access_count": 12
+    },
+    {
+        "file": "data.csv",
+        "access_count": 38
+    },
+    {
+        "file": "system.log",
+        "access_count": 987
+    }
+]

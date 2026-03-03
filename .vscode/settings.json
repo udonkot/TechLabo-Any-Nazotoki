@@ -1,0 +1,10 @@
+{
+    // java/ ディレクトリをソースルートに設定（Maven の sourceDirectory と一致させる）
+    "java.project.sourcePaths": [
+        "java"
+    ],
+    // Maven でコピーした依存 JAR を VS Code のクラスパスに追加
+    "java.project.referencedLibraries": [
+        "java/lib/*.jar"
+    ]
+}

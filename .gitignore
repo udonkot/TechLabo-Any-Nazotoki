@@ -1,0 +1,18 @@
+# Maven ビルド成果物・依存JARキャッシュ
+java/target/
+java/lib/
+
+# 解答ファイル（ネタバレ防止）
+java/answers/
+python/answers/
+
+# Python 仮想環境
+python/.venv/
+python/venv/
+python/__pycache__/
+python/**/__pycache__/
+python/**/*.py[cod]
+
+# IDE
+.idea/
+*.iml
