@@ -46,6 +46,8 @@ TechLabo-Any-Nazotoki/
 │
 └── java/                    # Java 版
     ├── pom.xml              # Maven 設定（依存ライブラリ定義）
+    ├── cli/
+    │   └── GameRunner.java  # CLI エントリーポイント（Python の runner.py 相当）
     ├── problems/            # 問題ファイル（プレイヤーが編集）
     │   ├── stage1/
     │   ├── stage2/
@@ -144,7 +146,24 @@ mvn compile
 mvn dependency:copy-dependencies "-DoutputDirectory=lib"
 ```
 
-#### 問題ファイルの実行
+#### ゲームの起動
+
+> **Windows で日本語が文字化けする場合**  
+> コマンドプロンプト: `chcp 65001` を実行してから起動してください。  
+> PowerShell: Windows Terminal を使用すると UTF-8 が自動的に適用されます。
+
+```cmd
+:: コマンドプロンプト (cmd) / java/ ディレクトリ内で実行
+chcp 65001
+mvn exec:java -Dexec.mainClass=cli.GameRunner
+```
+
+```powershell
+# PowerShell / java/ ディレクトリ内で実行
+mvn exec:java "-Dexec.mainClass=cli.GameRunner"
+```
+
+#### 問題ファイルの実行（個別確認用）
 
 ```cmd
 :: コマンドプロンプト (cmd) / java/ ディレクトリ内で実行

@@ -62,6 +62,14 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.3.0</version>
+                <configuration>
+                    <!-- Windows 環境での文字化けを防ぐために UTF-8 を強制 -->
+                    <jvmArgs>
+                        <jvmArg>-Dfile.encoding=UTF-8</jvmArg>
+                        <jvmArg>-Dstdout.encoding=UTF-8</jvmArg>
+                        <jvmArg>-Dstderr.encoding=UTF-8</jvmArg>
+                    </jvmArgs>
+                </configuration>
             </plugin>
         </plugins>
     </build>
